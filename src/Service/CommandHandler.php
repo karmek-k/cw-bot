@@ -29,7 +29,7 @@ class CommandHandler
             $content = $message->content;
             
             if ($this->prefixed($content)) {
-                $commandName = preg_replace($this->prefix, '', $content);
+                $commandName = str_replace($this->prefix, '', $content);
                 $this->commands[$commandName]->action($message, $discord);
             }
         });
