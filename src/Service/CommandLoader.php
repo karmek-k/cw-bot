@@ -30,7 +30,7 @@ class CommandLoader
         $result = [];
 
         foreach ($yaml['commands'] as $name => $config) {
-            $result[] = new $config['class']($name, $config['help']);
+            $result[$name] = new $config['class']($config['help']);
         }
 
         return $result;
