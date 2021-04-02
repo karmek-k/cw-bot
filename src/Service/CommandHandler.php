@@ -30,7 +30,10 @@ class CommandHandler
             
             if ($this->prefixed($content)) {
                 $commandName = str_replace($this->prefix, '', $content);
-                $this->commands[$commandName]->action($message, $discord);
+
+                // suppress warnings about non-existent keys
+                // TODO: return a message instead
+                @$this->commands[$commandName]?->action($message, $discord);
             }
         });
     }
