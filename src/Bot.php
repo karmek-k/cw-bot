@@ -10,17 +10,19 @@ use Discord\Discord;
  */
 class Bot
 {
-    /** @var Discord */
     private $discord;
+    private $prefix;
 
     /**
      * Creates a new Discord client instance.
      */
-    public function __construct(string $token)
+    public function __construct(string $token, string $prefix = '<?')
     {
         $this->discord = new Discord([
             'token' => $token,
         ]);
+
+        $this->prefix = $prefix;
     }
 
     /**
