@@ -10,24 +10,29 @@ use Discord\Discord;
  */
 class Bot
 {
-    /** @var Discord */
     private $discord;
+    private $prefix;
 
     /**
      * Creates a new Discord client instance.
      */
-    public function __construct(string $token)
+    public function __construct(string $token, string $prefix = '<?')
     {
         $this->discord = new Discord([
             'token' => $token,
         ]);
+
+        $this->prefix = $prefix;
     }
 
     /**
      * Calls `run()` on the Discord client.
+     * The `$callback` function accepts a `Discord\Discord`
+     * argument.
      */
-    public function run()
+    public function run(callable $onReady)
     {
-        $this->discord->run(function() {});
+        $this->discord->on('ready', $onReady);
+        $this->discord->run();
     }
 }

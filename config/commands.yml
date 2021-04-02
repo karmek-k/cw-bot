@@ -1,0 +1,4 @@
+commands:
+  ping:
+    class: CWBot\Command\Ping
+    help: Confirms that the bot works!
