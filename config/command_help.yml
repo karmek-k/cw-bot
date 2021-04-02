@@ -1,2 +1,2 @@
-commands:
+command_help:
   ping: Confirms that the bot works!
