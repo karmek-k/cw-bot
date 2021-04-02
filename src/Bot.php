@@ -4,6 +4,10 @@ namespace CWBot;
 
 use Discord\Discord;
 
+/**
+ * The most important class of CWBot.
+ * It allows interacting with the bot instance.
+ */
 class Bot
 {
     /** @var Discord */
