@@ -25,9 +25,12 @@ class Bot
 
     /**
      * Calls `run()` on the Discord client.
+     * The `$callback` function accepts a `Discord\Discord`
+     * argument.
      */
-    public function run()
+    public function run(callable $onReady)
     {
-        $this->discord->run(function() {});
+        $this->discord->on('ready', $onReady);
+        $this->discord->run();
     }
 }

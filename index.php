@@ -11,4 +11,4 @@ use CWBot\Bot;
 Dotenv::createImmutable(__DIR__)->load();
 
 $bot = new Bot($_ENV['BOT_TOKEN']);
-$bot->run();
+$bot->run(function ($discord) { $discord->close(); });
