@@ -5,7 +5,7 @@ namespace CWBot\Command;
 use Discord\Discord;
 use Discord\Parts\Channel\Message;
 
-class Ping implements BaseCommand
+class Ping extends BaseCommand
 {
     /**
      * Replies `Pong!` to the user.
