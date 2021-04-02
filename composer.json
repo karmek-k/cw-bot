@@ -1,0 +1,7 @@
+{
+    "name": "karmek-k/cw-bot",
+    "description": "Discord bot for keeping track of users' CodeWars profiles",
+    "type": "project",
+    "license": "MIT",
+    "require": {}
+}
