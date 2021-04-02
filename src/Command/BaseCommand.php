@@ -11,11 +11,19 @@ use Discord\Parts\Channel\Message;
  */
 abstract class BaseCommand
 {
-    public function __construct(private ?string $help = null) {}
+    public function __construct(
+        private string $name,
+        private ?string $help = null
+    ) {}
 
     public function getHelp(): ?string
     {
         return $this->help;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     abstract public function action(Message $message, Discord $discord);

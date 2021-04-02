@@ -29,9 +29,8 @@ class CommandLoader
     {
         $result = [];
 
-        foreach ($yaml['commands'] as $command) {
-            // $command['class'] is a class name
-            $result[] = new $command['class']($command['help']);
+        foreach ($yaml['commands'] as $name => $config) {
+            $result[] = new $config['class']($name, $config['help']);
         }
 
         return $result;
