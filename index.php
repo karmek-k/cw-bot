@@ -1,5 +1,10 @@
 <?php
 
+namespace CWBot;
+
 require __DIR__ . '/vendor/autoload.php';
 
-echo 'Hello world!' . PHP_EOL;
+use Dotenv\Dotenv;
+
+// initialize env. vars
+Dotenv::createImmutable(__DIR__)->load();
