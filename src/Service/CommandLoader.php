@@ -14,10 +14,27 @@ class CommandLoader
 
     public function __construct(string $path)
     {
-        $fileContent = file_get_contents($path);
+        $fileContent = file_get_contents($this->joinPaths(
+            constant('PROJECT_ROOT'), $path
+        ));
+
         $this->commands = $this->yamlArrayToCommands(
             Yaml::parse($fileContent)
         );
+    }
+
+    /**
+     * Courtesy of
+     * https://stackoverflow.com/questions/1091107/how-to-join-filesystem-path-strings-in-php
+     */
+    private function joinPaths() {
+        $paths = [];
+    
+        foreach (func_get_args() as $arg) {
+            if ($arg !== '') { $paths[] = $arg; }
+        }
+    
+        return preg_replace('#/+#','/',join('/', $paths));
     }
 
     /**
