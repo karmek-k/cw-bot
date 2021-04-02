@@ -3,5 +3,7 @@
     "description": "Discord bot for keeping track of users' CodeWars profiles",
     "type": "project",
     "license": "MIT",
-    "require": {}
+    "require": {
+        "team-reflex/discord-php": "^5.1"
+    }
 }
