@@ -4,6 +4,12 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "team-reflex/discord-php": "^5.1"
+        "team-reflex/discord-php": "^5.1",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "CWBot\\": "src"
+        }
     }
 }
