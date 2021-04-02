@@ -14,10 +14,12 @@ define('PROJECT_ROOT', __DIR__);
 // initialize env. vars
 Dotenv::createImmutable(__DIR__)->load();
 
-$loader = new CommandLoader('config/commands.yml');
-$commands = $loader->getCommands();
-
-$commandHandler = new CommandHandler($commands, $_ENV['PREFIX']);
 
 $bot = new Bot($_ENV['BOT_TOKEN']);
-$bot->run($commandHandler->handleCommands);
+$bot->run(function ($discord) {
+    $loader = new CommandLoader('config/commands.yml');
+    $commands = $loader->getCommands();
+
+    $commandHandler = new CommandHandler($commands, $_ENV['PREFIX']);
+    $commandHandler->handleCommands($discord);
+});
