@@ -9,10 +9,12 @@ use CWBot\Bot;
 use CWBot\Service\CommandHandler;
 use CWBot\Service\CommandLoader;
 
+define('PROJECT_ROOT', __DIR__);
+
 // initialize env. vars
 Dotenv::createImmutable(__DIR__)->load();
 
-$loader = new CommandLoader('config/commands');
+$loader = new CommandLoader('config/commands.yml');
 $commands = $loader->getCommands();
 
 $commandHandler = new CommandHandler($commands, $_ENV['PREFIX']);
