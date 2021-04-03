@@ -12,10 +12,14 @@ use CWBot\Service\CommandLoader;
 define('PROJECT_ROOT', __DIR__);
 
 // initialize env. vars
-Dotenv::createImmutable(__DIR__)->load();
+Dotenv::createImmutable(__DIR__)->safeLoad();
 
+$token = $_ENV['BOT_TOKEN'];
+if (!isset($token) || $token === '') {
+    throw new \Exception('You have not specified a bot token!');
+}
 
-$bot = new Bot($_ENV['BOT_TOKEN']);
+$bot = new Bot($token);
 $bot->run(function ($discord) {
     $loader = new CommandLoader('config/commands.yml');
     $commands = $loader->getCommands();
