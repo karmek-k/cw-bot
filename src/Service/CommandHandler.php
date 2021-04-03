@@ -29,11 +29,13 @@ class CommandHandler
             $content = $message->content;
             
             if ($this->prefixed($content)) {
-                $commandName = str_replace($this->prefix, '', $content);
+                $tokens = $this->tokenizeCommand($content);
+                $commandName = array_shift($tokens);
 
                 // suppress warnings about non-existent keys
                 // TODO: return a message instead
-                @$this->commands[$commandName]?->action($message, $discord);
+                @$this->commands[$commandName]
+                    ?->action($message, $discord, $tokens);
             }
         });
     }
@@ -45,5 +47,17 @@ class CommandHandler
     private function prefixed(string $text): bool
     {
         return str_starts_with($text, $this->prefix);
+    }
+
+    /**
+     * Explodes a command into tokens
+     * and strips off the command prefix.
+     */
+    private function tokenizeCommand(string $command): array
+    {
+        $tokens = explode(' ', $command);
+        $tokens[0] = str_replace($this->prefix, '', $tokens[0]);
+
+        return $tokens;
     }
 }
