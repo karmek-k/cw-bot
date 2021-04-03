@@ -20,5 +20,9 @@ abstract class BaseCommand
         return $this->help;
     }
 
-    abstract public function action(Message $message, Discord $discord);
+    abstract public function action(
+        Message $message,
+        Discord $discord,
+        ?array $arguments = null
+    );
 }
