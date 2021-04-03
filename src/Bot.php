@@ -16,13 +16,11 @@ class Bot
     /**
      * Creates a new Discord client instance.
      */
-    public function __construct(string $token, string $prefix = '<?')
+    public function __construct(string $token)
     {
         $this->discord = new Discord([
             'token' => $token,
         ]);
-
-        $this->prefix = $prefix;
     }
 
     /**

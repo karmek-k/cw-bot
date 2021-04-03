@@ -11,7 +11,9 @@ use Discord\Parts\Channel\Message;
  */
 abstract class BaseCommand
 {
-    public function __construct(private ?string $help = null) {}
+    public function __construct(
+        private ?string $help = null
+    ) {}
 
     public function getHelp(): ?string
     {
